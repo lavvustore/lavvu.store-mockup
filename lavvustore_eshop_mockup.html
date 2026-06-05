@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAVVU.STORE – Wholesale Eshop Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:      #003357;
+    --navy-dark: #0d1f3c;
+    --navy-mid:  #1e4080;
+    --gold:      #c9a84c;
+    --gold-light:#e0c47a;
+    --white:     #ffffff;
+    --bg:        #f7f8fa;
+    --beige:     rgba(224,196,122,0.15);
+    --text:      #003357;
+    --text-mid:  #4a5e7a;
+    --border:    rgba(201,168,76,0.22);
+    --border-lt: rgba(0,51,87,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  .topbar {
+    background: linear-gradient(90deg, #003357 0%, #0d1f3c 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 36px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .topbar-msg {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    padding-left: 150px;
+  }
+  .topbar-msg::before { content: '✦'; font-size: 8px; opacity: 0.8; }
+  .topbar-right { display: flex; align-items: center; gap: 20px; }
+  .topbar-link {
+    font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.45);
+    text-decoration: none; letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .topbar-link:hover { color: var(--gold-light); }
+  .topbar-sep { color: rgba(255,255,255,0.15); font-size: 10px; }
+
+  /* ── MAIN NAV ── */
+  nav {
+    background: linear-gradient(90deg, #003357 0%, #0d1f3c 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 72px;
+    display: flex; align-items: center; gap: 0;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.14);
+  }
+
+  .nav-logo {
+    flex-shrink: 0;
+    text-decoration: none;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    padding-right: 36px;
+    margin-right: 36px;
+  }
+  .nav-logo img {
+    height: 72px; display: block;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #ffffff;
+    border-radius: 1px;
+  }
+
+  /* Search */
+  .nav-search {
+    flex: 1; max-width: 500px;
+    position: relative;
+  }
+  .nav-search input {
+    width: 100%; padding: 10px 48px 10px 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 2px;
+    color: var(--white);
+    font-family: 'Open Sans', sans-serif; font-size: 13px;
+    outline: none; transition: border-color 0.2s, background 0.2s;
+  }
+  .nav-search input::placeholder { color: rgba(255,255,255,0.28); }
+  .nav-search input:focus {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.06);
+  }
+  .nav-search-btn {
+    position: absolute; right: 0; top: 0; bottom: 0;
+    padding: 0 15px; background: var(--gold); border: none; cursor: pointer;
+    display: flex; align-items: center; border-radius: 0 2px 2px 0;
+    transition: background 0.2s;
+  }
+  .nav-search-btn:hover { background: var(--gold-light); }
+  .nav-search-btn svg {
+    width: 15px; height: 15px; stroke: var(--navy-dark);
+    fill: none; stroke-width: 2.5; stroke-linecap: round;
+  }
+
+  /* User actions */
+  .nav-actions {
+    display: flex; align-items: center; gap: 2px;
+    margin-left: auto; padding-left: 24px;
+  }
+  .nav-action-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    padding: 7px 14px; background: transparent; border: none; cursor: pointer;
+    color: rgba(255,255,255,0.55); font-family: 'Open Sans', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-action-btn:hover { color: var(--gold-light); background: rgba(255,255,255,0.05); }
+  .nav-action-btn svg {
+    width: 19px; height: 19px; stroke: currentColor; fill: none;
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  .nav-divider { width: 1px; height: 30px; background: rgba(255,255,255,0.1); margin: 0 8px; }
+
+  /* Login ghost */
+  .btn-login {
+    padding: 8px 20px; border: 1px solid var(--border);
+    color: var(--gold-light); background: transparent;
+    font-family: 'Open Sans', sans-serif; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; cursor: pointer; border-radius: 2px;
+    text-decoration: none; transition: all 0.25s;
+  }
+  .btn-login:hover { color: var(--white); border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); }
+
+  /* Cart */
+  .nav-cart {
+    display: flex; align-items: center; gap: 9px;
+    padding: 9px 20px; background: var(--gold); border: none; cursor: pointer;
+    border-radius: 2px; color: var(--navy-dark); font-family: 'Open Sans', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+    position: relative; margin-left: 10px;
+  }
+  .nav-cart:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .nav-cart svg {
+    width: 17px; height: 17px; stroke: currentColor; fill: none;
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .cart-count {
+    position: absolute; top: -8px; right: -8px;
+    background: #d93025; color: #ffffff;
+    font-size: 12px; font-weight: 800;
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--white); line-height: 1;
+    box-shadow: 0 2px 6px rgba(217,48,37,0.5);
+  }
+
+  /* ── CATEGORY NAV ── */
+  .cat-nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border-lt);
+    box-shadow: 0 1px 0 var(--border);
+    padding: 0 48px;
+    display: flex; align-items: stretch;
+    position: sticky; top: 72px; z-index: 99;
+  }
+  .cat-item {
+    display: flex; align-items: center;
+    padding: 0 20px; min-height: 50px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+    position: relative;
+  }
+  .cat-item:hover { border-bottom-color: var(--gold); }
+  .cat-item.active { border-bottom-color: var(--gold); }
+  .cat-name {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--navy);
+    transition: color 0.2s;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .cat-item:hover .cat-name { color: var(--gold); }
+  .cat-item.active .cat-name { color: var(--navy); }
+  .cat-name-arrow {
+    font-size: 8px; opacity: 0.4; transition: opacity 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .cat-item:hover .cat-name-arrow { opacity: 1; transform: rotate(180deg); }
+
+  /* Dropdown – mega menu */
+  .cat-dropdown {
+    display: none;
+    position: fixed;
+    left: 0; right: 0;
+    top: 158px;
+    background: var(--white);
+    border-top: 2px solid var(--gold);
+    border-bottom: 3px solid var(--gold-light);
+    box-shadow: 0 12px 40px rgba(0,51,87,0.12);
+    z-index: 200;
+    padding: 32px 48px 36px;
+  }
+  .cat-item:hover .cat-dropdown { display: flex; gap: 48px; flex-wrap: wrap; }
+  .cat-dropdown a {
+    display: flex; align-items: center; gap: 7px;
+    padding: 6px 0;
+    font-size: 13px; font-weight: 400; color: var(--text-mid);
+    text-decoration: none; letter-spacing: 0.02em;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .cat-dropdown a:hover { color: var(--gold); }
+  .cat-dropdown a:hover svg { stroke: var(--gold); }
+  .cat-dropdown a svg {
+    width: 14px; height: 14px; stroke: var(--text-mid); fill: none;
+    stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+    flex-shrink: 0; transition: stroke 0.15s;
+  }
+  .cat-dropdown a.dd-new {
+    color: var(--gold); font-weight: 600; margin-bottom: 6px;
+  }
+  .cat-dropdown a.dd-new::before { content: '✦ '; font-size: 8px; }
+  .cat-dropdown a.dd-new svg { stroke: var(--gold); }
+  .cat-dropdown-sep {
+    height: 1px; background: var(--border-lt); margin: 8px 0 12px;
+  }
+
+  .cat-divider-v {
+    width: 1px; background: var(--border-lt);
+    margin: 12px 4px; flex-shrink: 0;
+  }
+  .cat-sale .cat-name { color: var(--gold); }
+  .cat-all {
+    margin-left: auto;
+    border-left: 1px solid var(--border-lt);
+    padding-left: 24px;
+  }
+  .cat-all .cat-name { color: var(--navy-mid); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 740px;
+    overflow: hidden;
+    background: #edf1f7;
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center center;
+  }
+  /* Gradient only on left half so right side of photo stays bright */
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      100deg,
+      rgba(255,255,255,0.97) 0%,
+      rgba(247,248,250,0.92) 30%,
+      rgba(240,244,250,0.6)  52%,
+      transparent 70%
+    );
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    height: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 60px 64px 220px;
+    max-width: 580px;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--gold); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 5.5vw, 76px);
+    font-weight: 300; line-height: 1.05; color: var(--navy);
+    margin-bottom: 14px;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+
+  .hero-subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(20px, 2.5vw, 30px);
+    font-weight: 300; color: var(--text-mid);
+    margin-bottom: 16px; line-height: 1.2;
+    animation: fadeUp 0.6s ease 0.15s both;
+  }
+
+  .hero-desc {
+    font-size: 15px; font-weight: 300; color: var(--text-mid);
+    line-height: 1.8; margin-bottom: 36px; max-width: 420px;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px; background: var(--gold); color: var(--navy-dark);
+    font-family: 'Open Sans', sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px; background: var(--navy); color: var(--white);
+    border: 2px solid var(--navy);
+    font-family: 'Open Sans', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-secondary:hover { background: var(--navy-mid); border-color: var(--navy-mid); transform: translateY(-2px); }
+
+  /* Hero stats strip */
+  .hero-stats {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+    display: flex;
+    background: rgba(0,51,87,0.95);
+    border-top: 1px solid var(--border);
+  }
+  .hero-stat {
+    flex: 1; padding: 38px 28px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px;
+  }
+  .hero-stat:last-child { border-right: none; }
+  .hero-stat-icon { color: var(--gold); margin-bottom: 2px; }
+  .hero-stat-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; color: var(--gold);
+    display: block; line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.13em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45);
+    display: block;
+  }
+  .hero-stat-sub {
+    font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.35);
+    display: block; line-height: 1.5;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-msg">Orders before 12:00 ship today &nbsp;·&nbsp; Free shipping from €150</div>
+  <div class="topbar-right">
+    <a href="#" class="topbar-link">About Us</a>
+    <span class="topbar-sep">|</span>
+    <a href="#" class="topbar-link">Contact</a>
+  </div>
+</div>
+
+<!-- MAIN NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/LAVVU.STORE%20logo.png" alt="LAVVU.STORE">
+  </a>
+
+  <div class="nav-search">
+    <input type="text" placeholder="Search products...">
+    <button class="nav-search-btn" aria-label="Search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+    </button>
+  </div>
+
+  <div class="nav-actions">
+    <a href="#" class="nav-action-btn">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </a>
+    <div class="nav-divider"></div>
+    <a href="#" class="btn-login">Logout →</a>
+    <a href="#" class="nav-cart">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-count">3</span>
+    </a>
+  </div>
+</nav>
+
+<!-- CATEGORY NAV -->
+<div class="cat-nav">
+  <div class="cat-item active">
+    <span class="cat-name">New In <span class="cat-name-arrow">▼</span></span>
+    <div class="cat-dropdown">
+      <a href="#" class="dd-new">Silver New In</a>
+      <a href="#" class="dd-new">Gold New In</a>
+      <a href="#" class="dd-new">Watches New In</a>
+      <a href="#" class="dd-new">Straps New In</a>
+      <a href="#" class="dd-new">Other New In</a>
+    </div>
+  </div>
+  <div class="cat-divider-v"></div>
+
+  <div class="cat-item">
+    <span class="cat-name">Gold <span class="cat-name-arrow">▼</span></span>
+    <div class="cat-dropdown">
+      <a href="#" class="dd-new">Gold New In</a>
+      <div class="cat-dropdown-sep"></div>
+      <a href="#">Gold Sets</a>
+      <a href="#">Gold Earrings</a>
+      <a href="#">Gold Necklaces</a>
+      <a href="#">Gold Bracelets</a>
+      <a href="#">Gold Rings</a>
+      <a href="#">Gold Pendants</a>
+      <a href="#">Children's Gold</a>
+    </div>
+  </div>
+
+  <div class="cat-item">
+    <span class="cat-name">Silver <span class="cat-name-arrow">▼</span></span>
+    <div class="cat-dropdown">
+      <a href="#" class="dd-new">Silver New In</a>
+      <div class="cat-dropdown-sep"></div>
+      <a href="#">Silver Sets</a>
+      <a href="#">Silver Earrings</a>
+      <a href="#">Silver Necklaces</a>
+      <a href="#">Silver Rings</a>
+      <a href="#">Silver Bracelets</a>
+      <a href="#">Silver Chains</a>
+      <a href="#">Silver Ankle Chains</a>
+      <a href="#">Men's Silver</a>
+      <a href="#">Children's Silver</a>
+      <a href="#">Zodiac Signs</a>
+      <a href="#">Flowers & Trees</a>
+      <a href="#">Hearts</a>
+      <a href="#">Letters & Pearls</a>
+      <a href="#">Silver Brooches</a>
+      <a href="#">Seasonal</a>
+      <a href="#">Last Pieces</a>
+    </div>
+  </div>
+
+  <div class="cat-item">
+    <span class="cat-name">Watches <span class="cat-name-arrow">▼</span></span>
+    <div class="cat-dropdown">
+      <a href="#" class="dd-new">Watches New In</a>
+      <div class="cat-dropdown-sep"></div>
+      <a href="#">Men's Watches</a>
+      <a href="#">Women's Watches</a>
+      <a href="#">Children's Watches</a>
+    </div>
+  </div>
+
+  <div class="cat-item">
+    <span class="cat-name">Watch Straps <span class="cat-name-arrow">▼</span></span>
+    <div class="cat-dropdown">
+      <a href="#" class="dd-new">Straps New In</a>
+      <div class="cat-dropdown-sep"></div>
+      <a href="#">Leather Straps</a>
+      <a href="#">Metal Bracelets</a>
+      <a href="#">Children's Straps</a>
+      <a href="#">Silicone Straps</a>
+      <a href="#">Apple Watch Straps</a>
+    </div>
+  </div>
+
+  <div class="cat-item">
+    <span class="cat-name">Wall Clocks <span class="cat-name-arrow">▼</span></span>
+    <div class="cat-dropdown">
+      <a href="#">Wooden Clocks</a>
+      <a href="#">Digital & Radio-Controlled</a>
+      <a href="#">Designer Clocks</a>
+      <a href="#">Sticker Clocks</a>
+      <a href="#">Clocks with Numerals</a>
+      <a href="#">Metal Clocks</a>
+      <a href="#">Glass Clocks</a>
+      <a href="#">Pendulum Clocks</a>
+      <a href="#">Sweep Second Hand</a>
+      <a href="#">Children's Clocks</a>
+    </div>
+  </div>
+
+  <div class="cat-item">
+    <span class="cat-name">Alarm Clocks <span class="cat-name-arrow">▼</span></span>
+    <div class="cat-dropdown">
+      <a href="#">Digital Alarm Clocks</a>
+      <a href="#">Analogue Alarm Clocks</a>
+      <a href="#">Radio-Controlled Alarm Clocks</a>
+    </div>
+  </div>
+
+  <a href="#" class="cat-item"><span class="cat-name">Spare Parts</span></a>
+  <a href="#" class="cat-item"><span class="cat-name">Promotion</span></a>
+  <a href="#" class="cat-item cat-all"><span class="cat-name">All Products →</span></a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img" src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/lavvustore-eshop-mockup-hero.png" alt="LAVVU.STORE">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">New Collection — Summer 2025</div>
+    <h1 class="hero-title">New in<br><em>Gold</em></h1>
+    <p class="hero-subtitle">14K Gold Jewellery by MINET</p>
+    <p class="hero-desc">Fresh summer pieces just landed — necklaces, earrings and bracelets in yellow, white and rose gold. Ready to ship today.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">New In Gold</a>
+      <a href="#" class="btn-secondary">All Gold Jewellery</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <span class="hero-stat-num">Free Shipping</span>
+      <span class="hero-stat-label">From €150</span>
+      <span class="hero-stat-sub">On all orders across Europe</span>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <span class="hero-stat-num">Same-Day Dispatch</span>
+      <span class="hero-stat-label">Order before 12:00</span>
+      <span class="hero-stat-sub">Ships the same day, every day</span>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 3H8L6 7h12l-2-4z"/></svg></div>
+      <span class="hero-stat-num">No Minimum Order</span>
+      <span class="hero-stat-label">Order from 1 piece</span>
+      <span class="hero-stat-sub">No commitments, no pressure</span>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 12l4-4M3 12l4 4"/><path d="M21 5a9 9 0 010 14"/></svg></div>
+      <span class="hero-stat-num">14-Day Free Returns</span>
+      <span class="hero-stat-label">Hassle-free policy</span>
+      <span class="hero-stat-sub">Return anything, no questions asked</span>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORY TILES -->
+<section class="cat-tiles">
+  <div class="cat-tiles-header">
+    <div class="cat-tiles-eyebrow">Shop by Category</div>
+    <h2 class="cat-tiles-title">3,500+ products — <em>find yours fast</em></h2>
+  </div>
+  <div class="cat-tiles-grid">
+
+    <a href="#" class="cat-tile">
+      <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold Jewellery">
+      <div class="cat-tile-overlay"></div>
+      <div class="cat-tile-body">
+        <span class="cat-tile-label">Gold Jewellery</span>
+        <span class="cat-tile-sub">14K · yellow, white & rose</span>
+      </div>
+    </a>
+
+    <a href="#" class="cat-tile">
+      <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-01.png" alt="Silver Jewellery">
+      <div class="cat-tile-overlay"></div>
+      <div class="cat-tile-body">
+        <span class="cat-tile-label">Silver Jewellery</span>
+        <span class="cat-tile-sub">Rhodium plated · 925</span>
+      </div>
+    </a>
+
+    <a href="#" class="cat-tile">
+      <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-02.png" alt="Watches">
+      <div class="cat-tile-overlay"></div>
+      <div class="cat-tile-body">
+        <span class="cat-tile-label">Watches</span>
+        <span class="cat-tile-sub">Steel · titanium · leather</span>
+      </div>
+    </a>
+
+    <a href="#" class="cat-tile">
+      <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-14.png" alt="Watch Straps">
+      <div class="cat-tile-overlay"></div>
+      <div class="cat-tile-body">
+        <span class="cat-tile-label">Watch Straps</span>
+        <span class="cat-tile-sub">Leather · silicone · metal</span>
+      </div>
+    </a>
+
+    <a href="#" class="cat-tile">
+      <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-19.png" alt="Wall Clocks">
+      <div class="cat-tile-overlay"></div>
+      <div class="cat-tile-body">
+        <span class="cat-tile-label">Wall Clocks</span>
+        <span class="cat-tile-sub">LAVVU · VLAHA · handmade</span>
+      </div>
+    </a>
+
+    <a href="#" class="cat-tile">
+      <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-05.png" alt="Alarm Clocks">
+      <div class="cat-tile-overlay"></div>
+      <div class="cat-tile-body">
+        <span class="cat-tile-label">Alarm Clocks</span>
+        <span class="cat-tile-sub">Digital · analogue · radio</span>
+      </div>
+    </a>
+
+    <a href="#" class="cat-tile">
+      <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-12.png" alt="Spare Parts">
+      <div class="cat-tile-overlay"></div>
+      <div class="cat-tile-body">
+        <span class="cat-tile-label">Spare Parts</span>
+        <span class="cat-tile-sub">Movements · batteries · tools</span>
+      </div>
+    </a>
+
+    <a href="#" class="cat-tile">
+      <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-09.png" alt="Promotion">
+      <div class="cat-tile-overlay"></div>
+      <div class="cat-tile-body">
+        <span class="cat-tile-label">Promotion</span>
+        <span class="cat-tile-sub">Displays · stands · materials</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- NEW IN -->
+<section class="product-grid-section">
+  <div class="pgs-header">
+    <div>
+      <div class="pgs-eyebrow">Just Arrived</div>
+      <h2 class="pgs-title">New In</h2>
+    </div>
+    <a href="#" class="pgs-see-all">View all new arrivals →</a>
+  </div>
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-01.png" alt="Silver necklace">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET</span>
+        <span class="product-card-name">Silver Pendant Necklace</span>
+        <span class="product-card-ref">SKU: MN-4421-S</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€12.90</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold earrings">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET Gold</span>
+        <span class="product-card-name">14K Gold Hoop Earrings</span>
+        <span class="product-card-ref">SKU: MG-2201-Y</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€38.50</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-02.png" alt="Watch">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Men's Dress Watch Steel</span>
+        <span class="product-card-ref">SKU: LW-0881-B</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€74.00</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-14.png" alt="Watch strap">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Leather Strap Brown 20mm</span>
+        <span class="product-card-ref">SKU: LS-0320-BR</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€9.90</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-05.png" alt="Alarm clock">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MPM</span>
+        <span class="product-card-name">Digital Alarm Clock White</span>
+        <span class="product-card-ref">SKU: MP-1104-W</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€16.20</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-12.png" alt="Spare parts">
+        <span class="badge badge-sale">−15%</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">RONDA</span>
+        <span class="product-card-name">Quartz Movement Set ×10</span>
+        <span class="product-card-ref">SKU: RD-515-10PK</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€22.00 <s class="product-card-old">€25.90</s></span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-19.png" alt="Wall clock">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">VLAHA</span>
+        <span class="product-card-name">Handmade Oak Wall Clock</span>
+        <span class="product-card-ref">SKU: VL-OAK-580</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€89.00</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-09.png" alt="Display stand">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Jewellery Display Riser Set</span>
+        <span class="product-card-ref">SKU: DS-RSR-3PC</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€18.50</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-01.png" alt="Silver anklet">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET</span>
+        <span class="product-card-name">Silver Ankle Chain 25cm</span>
+        <span class="product-card-ref">SKU: MN-7701-A</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€9.50</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold pendant">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET Gold</span>
+        <span class="product-card-name">14K Gold Cross Pendant</span>
+        <span class="product-card-ref">SKU: MG-6610-Y</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€24.00</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-14.png" alt="Metal bracelet">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Metal Mesh Bracelet 18mm</span>
+        <span class="product-card-ref">SKU: LS-MSH18-GD</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€16.80</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap">
+        <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-05.png" alt="Radio clock">
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MPM</span>
+        <span class="product-card-name">Radio-Controlled Wall Clock 30cm</span>
+        <span class="product-card-ref">SKU: MP-RC30-BK</span>
+        <div class="product-card-footer">
+          <span class="product-card-price">€34.00</span>
+          <div class="qty-stepper">
+            <button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button>
+          </div>
+          
+        </div>
+      </div>
+    </a>
+  </div>
+  <div style="text-align:right; margin-top:40px;">
+    <a href="#" class="pgs-see-all" style="display:inline-block;">View all new arrivals →</a>
+  </div>
+</section>
+<!-- Gold -->
+<section class="cat-block">
+  <div class="cat-block-header">
+    <div class="cat-block-meta">
+      <div class="pgs-eyebrow">14K Yellow · White · Rose</div>
+      <h2 class="pgs-title">Gold Jewellery</h2>
+      <p class="cat-block-desc">Certified 14-karat gold pieces by MINET — necklaces, earrings, rings and bracelets ready to ship from stock. Fixed wholesale prices, no minimums.</p>
+    </div>
+    <a href="#" class="btn-outline-navy">See all Gold →</a>
+  </div>
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold necklace"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET Gold</span>
+        <span class="product-card-name">14K Gold Chain Necklace 45cm</span>
+        <span class="product-card-ref">SKU: MG-4501-Y</span>
+        <div class="product-card-footer"><span class="product-card-price">€28.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold bracelet"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET Gold</span>
+        <span class="product-card-name">14K Gold Bracelet Anchor</span>
+        <span class="product-card-ref">SKU: MG-8120-W</span>
+        <div class="product-card-footer"><span class="product-card-price">€34.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold earrings"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET Gold</span>
+        <span class="product-card-name">14K Rose Gold Drop Earrings</span>
+        <span class="product-card-ref">SKU: MG-2310-R</span>
+        <div class="product-card-footer"><span class="product-card-price">€31.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold ring"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET Gold</span>
+        <span class="product-card-name">14K Gold Signet Ring</span>
+        <span class="product-card-ref">SKU: MG-7700-Y</span>
+        <div class="product-card-footer"><span class="product-card-price">€47.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Silver -->
+<section class="cat-block cat-block--alt">
+  <div class="cat-block-header">
+    <div class="cat-block-meta">
+      <div class="pgs-eyebrow">925 · Rhodium plated</div>
+      <h2 class="pgs-title">Silver Jewellery</h2>
+      <p class="cat-block-desc">The widest range in our catalogue — 1,200+ silver SKUs covering sets, earrings, necklaces, rings and seasonal themes. Consistent quality, competitive pricing.</p>
+    </div>
+    <a href="#" class="btn-outline-navy">See all Silver →</a>
+  </div>
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-01.png" alt="Silver set"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET</span>
+        <span class="product-card-name">Silver Necklace & Earring Set</span>
+        <span class="product-card-ref">SKU: MN-SET-401</span>
+        <div class="product-card-footer"><span class="product-card-price">€18.90</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-01.png" alt="Silver ring"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET</span>
+        <span class="product-card-name">925 Silver Zirconia Ring</span>
+        <span class="product-card-ref">SKU: MN-6620-Z</span>
+        <div class="product-card-footer"><span class="product-card-price">€10.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-01.png" alt="Silver bracelet"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET</span>
+        <span class="product-card-name">Silver Curb Chain Bracelet</span>
+        <span class="product-card-ref">SKU: MN-9810-B</span>
+        <div class="product-card-footer"><span class="product-card-price">€14.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-01.png" alt="Silver pendant"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MINET</span>
+        <span class="product-card-name">925 Silver Heart Pendant</span>
+        <span class="product-card-ref">SKU: MN-5501-H</span>
+        <div class="product-card-footer"><span class="product-card-price">€8.20</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Watches -->
+<section class="cat-block">
+  <div class="cat-block-header">
+    <div class="cat-block-meta">
+      <div class="pgs-eyebrow">MPM · LAVVU · Casio</div>
+      <h2 class="pgs-title">Watches</h2>
+      <p class="cat-block-desc">Men's, women's and children's watches across every price point — steel, titanium and leather. In-stock, same-day dispatch.</p>
+    </div>
+    <a href="#" class="btn-outline-navy">See all Watches →</a>
+  </div>
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-02.png" alt="Men's watch"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MPM</span>
+        <span class="product-card-name">Men's Chronograph Steel</span>
+        <span class="product-card-ref">SKU: MP-7710-CH</span>
+        <div class="product-card-footer"><span class="product-card-price">€68.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-02.png" alt="Ladies watch"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MPM</span>
+        <span class="product-card-name">Ladies Crystal Dial Watch</span>
+        <span class="product-card-ref">SKU: MP-4402-CR</span>
+        <div class="product-card-footer"><span class="product-card-price">€39.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-02.png" alt="Children watch"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MPM</span>
+        <span class="product-card-name">Children's Colour Dial Watch</span>
+        <span class="product-card-ref">SKU: MP-K101-BL</span>
+        <div class="product-card-footer"><span class="product-card-price">€14.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-02.png" alt="Smart watch"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Sport GPS Watch Black</span>
+        <span class="product-card-ref">SKU: LW-GPS-BK</span>
+        <div class="product-card-footer"><span class="product-card-price">€92.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Straps -->
+<section class="cat-block cat-block--alt">
+  <div class="cat-block-header">
+    <div class="cat-block-meta">
+      <div class="pgs-eyebrow">Leather · Silicone · Metal</div>
+      <h2 class="pgs-title">Watch Straps</h2>
+      <p class="cat-block-desc">High-margin accessories your customers keep coming back for. All standard lug widths in stock. Apple Watch straps available too.</p>
+    </div>
+    <a href="#" class="btn-outline-navy">See all Straps →</a>
+  </div>
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-14.png" alt="Leather strap"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Leather Strap Crocodile Brown</span>
+        <span class="product-card-ref">SKU: LS-CR20-BR</span>
+        <div class="product-card-footer"><span class="product-card-price">€11.90</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-14.png" alt="Metal bracelet"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Metal Milanese Bracelet 20mm</span>
+        <span class="product-card-ref">SKU: LS-MIL20-SL</span>
+        <div class="product-card-footer"><span class="product-card-price">€14.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-14.png" alt="Apple Watch strap"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Apple Watch Leather Band 44mm</span>
+        <span class="product-card-ref">SKU: LS-AW44-TN</span>
+        <div class="product-card-footer"><span class="product-card-price">€13.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-14.png" alt="Silicone strap"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Silicone Strap Navy 18mm</span>
+        <span class="product-card-ref">SKU: LS-S18-NV</span>
+        <div class="product-card-footer"><span class="product-card-price">€4.90</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Wall Clocks -->
+<section class="cat-block">
+  <div class="cat-block-header">
+    <div class="cat-block-meta">
+      <div class="pgs-eyebrow">LAVVU · VLAHA · MPM</div>
+      <h2 class="pgs-title">Wall Clocks</h2>
+      <p class="cat-block-desc">Handmade wooden clocks by VLAHA, designer pieces by LAVVU and radio-controlled options by MPM. High-margin décor category with strong repeat demand.</p>
+    </div>
+    <a href="#" class="btn-outline-navy">See all Wall Clocks →</a>
+  </div>
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-19.png" alt="Wooden clock"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">VLAHA</span>
+        <span class="product-card-name">Handmade Walnut Wall Clock 58cm</span>
+        <span class="product-card-ref">SKU: VL-WLT-580</span>
+        <div class="product-card-footer"><span class="product-card-price">€110.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-19.png" alt="LOFT clock"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">LOFT Wall Clock 40cm Black</span>
+        <span class="product-card-ref">SKU: LW-LOFT-40B</span>
+        <div class="product-card-footer"><span class="product-card-price">€29.90</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-19.png" alt="Radio clock"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MPM</span>
+        <span class="product-card-name">Radio-Controlled Clock 30cm</span>
+        <span class="product-card-ref">SKU: MP-RC30-BK</span>
+        <div class="product-card-footer"><span class="product-card-price">€34.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-19.png" alt="Glass clock"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Glass Designer Clock 35cm</span>
+        <span class="product-card-ref">SKU: LW-GLS-35W</span>
+        <div class="product-card-footer"><span class="product-card-price">€44.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Alarm Clocks -->
+<section class="cat-block cat-block--alt">
+  <div class="cat-block-header">
+    <div class="cat-block-meta">
+      <div class="pgs-eyebrow">Digital · Analogue · Radio</div>
+      <h2 class="pgs-title">Alarm Clocks</h2>
+      <p class="cat-block-desc">Reliable everyday sellers — digital, analogue and radio-controlled alarm clocks across all price points. Compact, easy to reorder.</p>
+    </div>
+    <a href="#" class="btn-outline-navy">See all Alarm Clocks →</a>
+  </div>
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-05.png" alt="Digital alarm"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MPM</span>
+        <span class="product-card-name">Digital Alarm Clock White</span>
+        <span class="product-card-ref">SKU: MP-1104-W</span>
+        <div class="product-card-footer"><span class="product-card-price">€16.20</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-05.png" alt="Analogue alarm"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MPM</span>
+        <span class="product-card-name">Analogue Alarm Clock Chrome</span>
+        <span class="product-card-ref">SKU: MP-2200-CR</span>
+        <div class="product-card-footer"><span class="product-card-price">€11.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-05.png" alt="Radio alarm"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MPM</span>
+        <span class="product-card-name">Radio-Controlled Alarm Clock</span>
+        <span class="product-card-ref">SKU: MP-RC10-BK</span>
+        <div class="product-card-footer"><span class="product-card-price">€22.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-05.png" alt="Kids alarm"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">MPM</span>
+        <span class="product-card-name">Children's Alarm Clock Colour</span>
+        <span class="product-card-ref">SKU: MP-K50-CO</span>
+        <div class="product-card-footer"><span class="product-card-price">€13.80</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Spare Parts -->
+<section class="cat-block">
+  <div class="cat-block-header">
+    <div class="cat-block-meta">
+      <div class="pgs-eyebrow">Movements · Batteries · Tools</div>
+      <h2 class="pgs-title">Spare Parts</h2>
+      <p class="cat-block-desc">Everything a watch or clock repair shop needs — quartz movements, batteries, straps tools and consumables. Low unit price, high volume.</p>
+    </div>
+    <a href="#" class="btn-outline-navy">See all Spare Parts →</a>
+  </div>
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-12.png" alt="Quartz movement"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">RONDA</span>
+        <span class="product-card-name">Quartz Movement Set ×10</span>
+        <span class="product-card-ref">SKU: RD-515-10PK</span>
+        <div class="product-card-footer"><span class="product-card-price">€22.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-12.png" alt="Battery pack"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">ENERGIZER</span>
+        <span class="product-card-name">SR626SW Watch Battery ×10</span>
+        <span class="product-card-ref">SKU: EN-SR626-10</span>
+        <div class="product-card-footer"><span class="product-card-price">€4.20</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-12.png" alt="Strap tool"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">BERGEON</span>
+        <span class="product-card-name">Spring Bar Tool Professional</span>
+        <span class="product-card-ref">SKU: BG-6767-F</span>
+        <div class="product-card-footer"><span class="product-card-price">€8.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-12.png" alt="Crown set"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">RONDA</span>
+        <span class="product-card-name">Watch Crown Assortment ×20</span>
+        <span class="product-card-ref">SKU: RD-CRN-20PK</span>
+        <div class="product-card-footer"><span class="product-card-price">€6.90</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Promotion -->
+<section class="cat-block cat-block--alt">
+  <div class="cat-block-header">
+    <div class="cat-block-meta">
+      <div class="pgs-eyebrow">Displays · Stands · Materials</div>
+      <h2 class="pgs-title">Promotion</h2>
+      <p class="cat-block-desc">Display stands, ring boxes, jewellery trays and POS materials to help your customers merchandise their shop floor effectively.</p>
+    </div>
+    <a href="#" class="btn-outline-navy">See all Promotion →</a>
+  </div>
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-09.png" alt="Ring box"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Ring Gift Box Navy Velvet</span>
+        <span class="product-card-ref">SKU: PK-RNG-NV</span>
+        <div class="product-card-footer"><span class="product-card-price">€1.80</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-09.png" alt="Display riser"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Jewellery Display Riser Set</span>
+        <span class="product-card-ref">SKU: DS-RSR-3PC</span>
+        <div class="product-card-footer"><span class="product-card-price">€18.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-09.png" alt="Necklace stand"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Necklace T-Bar Stand Black</span>
+        <span class="product-card-ref">SKU: DS-TBR-BK</span>
+        <div class="product-card-footer"><span class="product-card-price">€7.20</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-09.png" alt="Earring card"></div>
+      <div class="product-card-body">
+        <span class="product-card-brand">LAVVU</span>
+        <span class="product-card-name">Earring Display Card ×50</span>
+        <span class="product-card-ref">SKU: DS-ERC-50</span>
+        <div class="product-card-footer"><span class="product-card-price">€3.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+      </div>
+    </a>
+  </div>
+</section>
+<section class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    </div>
+    <div class="trust-text">
+      <strong>Same-Day Dispatch</strong>
+      <span>Order before 12:00 — ships today</span>
+    </div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <div class="trust-text">
+      <strong>No Minimum Order</strong>
+      <span>Order from 1 piece, any time</span>
+    </div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+    </div>
+    <div class="trust-text">
+      <strong>Fixed Wholesale Prices</strong>
+      <span>Stable pricing, no surprises</span>
+    </div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><path d="M3 12h18M3 12l4-4M3 12l4 4"/><path d="M21 5a9 9 0 010 14"/></svg>
+    </div>
+    <div class="trust-text">
+      <strong>Free Returns</strong>
+      <span>14-day hassle-free policy</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/LAVVU.STORE%20logo.png" alt="LAVVU.STORE" class="footer-logo">
+      <p class="footer-tagline">Your wholesale partner for jewellery, watches &amp; accessories. 3,500+ products. Same-day dispatch.</p>
+      <div class="footer-social">
+        <a href="#" class="footer-social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Shop</h4>
+      <a href="#" class="footer-link">Gold Jewellery</a>
+      <a href="#" class="footer-link">Silver Jewellery</a>
+      <a href="#" class="footer-link">Watches</a>
+      <a href="#" class="footer-link">Watch Straps</a>
+      <a href="#" class="footer-link">Wall Clocks</a>
+      <a href="#" class="footer-link">Alarm Clocks</a>
+      <a href="#" class="footer-link">Spare Parts</a>
+      <a href="#" class="footer-link">Promotion</a>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Account</h4>
+      <a href="#" class="footer-link">My Account</a>
+      <a href="#" class="footer-link">Order History</a>
+      <a href="#" class="footer-link">Saved Lists</a>
+      <a href="#" class="footer-link">Price Lists</a>
+      <a href="#" class="footer-link">New Customer Registration</a>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Information</h4>
+      <a href="#" class="footer-link">About LAVVU.STORE</a>
+      <a href="#" class="footer-link">Shipping & Delivery</a>
+      <a href="#" class="footer-link">Returns Policy</a>
+      <a href="#" class="footer-link">Terms & Conditions</a>
+      <a href="#" class="footer-link">Privacy Policy</a>
+      <a href="#" class="footer-link">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Contact</h4>
+      <p class="footer-contact-line">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +420 123 456 789
+      </p>
+      <p class="footer-contact-line">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@lavvustore.com
+      </p>
+      <p class="footer-contact-line">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Mon–Fri 8:00–16:30
+      </p>
+      <div class="footer-payment">
+        <span class="footer-payment-label">We accept</span>
+        <div class="footer-payment-icons">
+          <span class="pay-icon">VISA</span>
+          <span class="pay-icon">MC</span>
+          <span class="pay-icon">PayPal</span>
+          <span class="pay-icon">SEPA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 LAVVU.STORE s.r.o. All rights reserved.</span>
+    <span class="footer-bottom-sep">·</span>
+    <a href="#" class="footer-bottom-link">Privacy Policy</a>
+    <span class="footer-bottom-sep">·</span>
+    <a href="#" class="footer-bottom-link">Terms & Conditions</a>
+    <span class="footer-bottom-sep">·</span>
+    <span>VAT: CZ12345678</span>
+  </div>
+</footer>
+
+<style>
+  /* ── CATEGORY TILES ── */
+  .cat-tiles {
+    background: var(--white);
+    padding: 72px 48px;
+    border-bottom: 1px solid var(--border-lt);
+  }
+  .cat-tiles-header {
+    margin-bottom: 40px;
+  }
+  .cat-tiles-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px;
+  }
+  .cat-tiles-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+  .cat-tiles-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 44px); font-weight: 300;
+    color: var(--navy); line-height: 1.15;
+  }
+  .cat-tiles-title em { font-style: italic; color: var(--gold); }
+
+  .cat-tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 300px;
+    gap: 12px;
+  }
+
+  .cat-tile {
+    position: relative; overflow: hidden;
+    border-radius: 2px;
+    text-decoration: none;
+    display: block;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .cat-tile:hover { border-color: var(--gold); }
+  .cat-tile img {
+    width: 100%; height: 100%;
+    object-fit: contain; object-position: center;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+    padding: 20px;
+  }
+  .cat-tile:hover img { transform: scale(1.04); }
+
+  .cat-tile-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,51,87,0.75) 0%, rgba(0,51,87,0.1) 50%, transparent 100%);
+    transition: opacity 0.3s;
+  }
+  .cat-tile:hover .cat-tile-overlay { opacity: 0.4; }
+
+  .cat-tile-body {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px 24px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .cat-tile-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 400; color: var(--white);
+    line-height: 1.1;
+  }
+  .cat-tile-sub {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold-light);
+  }
+
+  /* ── PRODUCT GRID SECTIONS ── */
+  .product-grid-section {
+    background: var(--beige);
+    padding: 72px 48px;
+    border-bottom: 1px solid var(--border-lt);
+  }
+  .product-grid-section--alt {
+    background: var(--bg);
+  }
+
+  .pgs-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .pgs-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px;
+  }
+  .pgs-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+  .pgs-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 2.8vw, 40px); font-weight: 300;
+    color: var(--navy); line-height: 1.1;
+  }
+  .pgs-see-all {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--navy-mid);
+    text-decoration: none; padding-bottom: 2px;
+    border-bottom: 1px solid var(--border-lt);
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap; margin-left: 24px;
+  }
+  .pgs-see-all:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* Product Grid */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--border-lt);
+    border-radius: 2px;
+    text-decoration: none;
+    display: flex; flex-direction: column;
+    transition: box-shadow 0.25s, transform 0.25s;
+    overflow: hidden;
+  }
+  .product-card:hover {
+    box-shadow: 0 8px 32px rgba(0,51,87,0.10);
+    transform: translateY(-2px);
+  }
+
+  .product-card-img-wrap {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .product-card-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: contain; object-position: center;
+    padding: 16px;
+    transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .product-card:hover .product-card-img-wrap img { transform: scale(1.05); }
+
+  .badge {
+    position: absolute; top: 10px; left: 10px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 3px 8px;
+    border-radius: 1px; line-height: 1.4;
+  }
+  .badge-new { background: var(--navy); color: var(--white); }
+  .badge-sale { background: #c0392b; color: var(--white); }
+  .badge-best { background: var(--gold); color: var(--navy-dark); }
+
+  .product-card-body {
+    padding: 14px 16px 16px;
+    display: flex; flex-direction: column; gap: 3px;
+    flex: 1;
+  }
+  .product-card-brand {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .product-card-name {
+    font-size: 13px; font-weight: 500; color: var(--navy);
+    line-height: 1.35;
+  }
+  .product-card-ref {
+    font-size: 11px; font-weight: 400; color: var(--text-mid);
+    letter-spacing: 0.04em;
+  }
+  .product-card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 10px; padding-top: 10px;
+    border-top: 1px solid var(--border-lt);
+  }
+  .product-card-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 600; color: var(--navy);
+    display: flex; align-items: baseline; gap: 6px;
+  }
+  .product-card-old {
+    font-size: 13px; font-weight: 300; color: var(--text-mid);
+    text-decoration: line-through;
+  }
+  .qty-stepper {
+    display: flex; align-items: stretch;
+    border: 1.5px solid var(--border-lt);
+    border-radius: 2px; overflow: hidden;
+    flex-shrink: 0;
+  }
+  .qty-btn {
+    width: 28px; height: 28px;
+    background: var(--bg); border: none; cursor: pointer;
+    font-size: 14px; font-weight: 400; color: var(--text-mid);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, color 0.15s;
+    flex-shrink: 0;
+  }
+  .qty-btn:hover { background: var(--border-lt); }
+  .qty-btn.qty-btn--plus {
+    background: var(--navy); color: var(--white);
+  }
+  .qty-btn.qty-btn--plus:hover { background: var(--navy-mid); color: var(--white); }
+  .qty-val {
+    width: 32px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--navy);
+    border-left: 1px solid var(--border-lt);
+    border-right: 1px solid var(--border-lt);
+    background: var(--white);
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  /* ── CATEGORY BLOCKS ── */
+  .cat-block {
+    background: var(--white);
+    padding: 72px 48px;
+    border-bottom: 1px solid var(--border-lt);
+  }
+  .cat-block--alt { background: var(--bg); }
+
+  .cat-block-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .cat-block-meta { max-width: 560px; }
+  .cat-block-desc {
+    font-size: 14px; font-weight: 300; color: var(--text-mid);
+    line-height: 1.8; margin-top: 10px;
+  }
+
+  .btn-outline-navy {
+    display: inline-flex; align-items: center;
+    padding: 10px 24px; border: 1.5px solid var(--navy);
+    color: var(--navy); background: transparent;
+    font-family: 'Open Sans', sans-serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px; white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+    margin-left: 24px;
+  }
+  .btn-outline-navy:hover { background: var(--navy); color: var(--white); }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: linear-gradient(90deg, #003357 0%, #0d1f3c 100%);
+    border-top: 2px solid var(--gold);
+    padding: 0 48px;
+    display: flex; align-items: stretch;
+  }
+  .trust-item {
+    flex: 1; padding: 40px 28px;
+    display: flex; align-items: center; gap: 18px;
+    border-right: 1px solid rgba(201,168,76,0.15);
+  }
+  .trust-item:last-child { border-right: none; }
+  .trust-sep { display: none; }
+  .trust-icon {
+    flex-shrink: 0; color: var(--gold);
+    width: 44px; height: 44px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 50%; border: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .trust-icon svg {
+    width: 20px; height: 20px; stroke: currentColor; fill: none;
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .trust-text {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .trust-text strong {
+    font-size: 14px; font-weight: 700; color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .trust-text span {
+    font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.45);
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: #060f1c;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+  .footer-top {
+    padding: 64px 48px 48px;
+    display: grid;
+    grid-template-columns: 280px repeat(4, 1fr);
+    gap: 48px;
+  }
+  .footer-logo {
+    height: 56px; display: block; margin-bottom: 18px;
+    border-left: 3px solid #ffffff; border-right: 3px solid #ffffff;
+  }
+  .footer-tagline {
+    font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.35);
+    line-height: 1.8; margin-bottom: 24px;
+  }
+  .footer-social { display: flex; gap: 10px; }
+  .footer-social-link {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.35); text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .footer-social-link:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-social-link svg {
+    width: 15px; height: 15px; stroke: currentColor; fill: none;
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .footer-col { display: flex; flex-direction: column; gap: 2px; }
+  .footer-col-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .footer-link {
+    font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4);
+    text-decoration: none; padding: 4px 0;
+    transition: color 0.2s;
+  }
+  .footer-link:hover { color: rgba(255,255,255,0.85); }
+  .footer-contact-line {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4);
+    margin-bottom: 10px;
+  }
+  .footer-contact-line svg {
+    width: 14px; height: 14px; stroke: var(--gold); fill: none;
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+  .footer-payment { margin-top: 20px; }
+  .footer-payment-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.25);
+    display: block; margin-bottom: 10px;
+  }
+  .footer-payment-icons { display: flex; gap: 8px; }
+  .pay-icon {
+    padding: 4px 10px; border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 2px; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.05em; color: rgba(255,255,255,0.3);
+  }
+  .footer-bottom {
+    padding: 18px 48px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.2);
+  }
+  .footer-bottom-link {
+    color: rgba(255,255,255,0.25); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-bottom-link:hover { color: var(--gold); }
+  .footer-bottom-sep { opacity: 0.2; }
+</style>
+
+</body>
+</html>
