@@ -150,17 +150,17 @@
   }
   .nav-cart:hover { background: var(--gold-light); transform: translateY(-1px); }
   .nav-cart svg {
-    width: 17px; height: 17px; stroke: currentColor; fill: none;
-    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    width: 26px; height: 26px; stroke: currentColor; fill: none;
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
   }
   .cart-count {
-    position: absolute; top: -8px; right: -8px;
+    position: absolute; top: -10px; right: -10px;
     background: #d93025; color: #ffffff;
     font-size: 12px; font-weight: 800;
-    width: 22px; height: 22px; border-radius: 50%;
+    width: 26px; height: 26px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     border: 2px solid var(--white); line-height: 1;
-    box-shadow: 0 2px 6px rgba(217,48,37,0.5);
+    box-shadow: 0 2px 8px rgba(217,48,37,0.55);
   }
 
   /* ── CATEGORY NAV ── */
@@ -170,12 +170,12 @@
     box-shadow: 0 1px 0 var(--border);
     padding: 0 48px;
     display: flex; align-items: stretch;
-    position: sticky; top: 72px; z-index: 99;
+    position: sticky; top: 72px; z-index: 400;
+    overflow: visible;
   }
   .cat-item {
     display: flex; align-items: center;
-    padding: 0 20px; min-height: 50px;
-    text-decoration: none;
+    padding: 0; min-height: 50px;
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
     transition: border-color 0.2s, color 0.2s;
@@ -184,6 +184,11 @@
   }
   .cat-item:hover { border-bottom-color: var(--gold); }
   .cat-item.active { border-bottom-color: var(--gold); }
+  .cat-item-link {
+    display: flex; align-items: center;
+    padding: 0 20px; min-height: 50px;
+    text-decoration: none;
+  }
   .cat-name {
     font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
     text-transform: uppercase; color: var(--navy);
@@ -208,7 +213,7 @@
     border-top: 2px solid var(--gold);
     border-bottom: 3px solid var(--gold-light);
     box-shadow: 0 12px 40px rgba(0,51,87,0.12);
-    z-index: 200;
+    z-index: 9999;
     padding: 32px 48px 36px;
   }
   .cat-item:hover .cat-dropdown { display: flex; gap: 48px; flex-wrap: wrap; }
@@ -244,7 +249,7 @@
   .cat-all {
     margin-left: auto;
     border-left: 1px solid var(--border-lt);
-    padding-left: 24px;
+    padding-left: 4px;
   }
   .cat-all .cat-name { color: var(--navy-mid); }
 
@@ -367,6 +372,47 @@
     display: block; line-height: 1.5;
   }
 
+  /* ── ACCOUNT DROPDOWN ── */
+  .nav-account-wrap {
+    position: relative;
+  }
+  .nav-account-btn {
+    display: flex; align-items: center;
+  }
+  .nav-account-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding-top: 8px;
+    background: transparent;
+    min-width: 210px;
+    z-index: 9999;
+  }
+  .nav-account-dropdown-inner {
+    background: var(--white);
+    border: 1px solid var(--border-lt);
+    border-top: 2px solid var(--gold);
+    box-shadow: 0 8px 32px rgba(0,51,87,0.13);
+    border-radius: 0 0 2px 2px;
+  }
+  .nav-account-wrap:hover .nav-account-dropdown { display: block; }
+  .nav-account-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 18px;
+    font-size: 13px; font-weight: 400; color: var(--text-mid);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 1px solid var(--border-lt);
+    transition: background 0.15s, color 0.15s;
+  }
+  .nav-account-item:last-child { border-bottom: none; }
+  .nav-account-item:hover { background: var(--beige); color: var(--navy); }
+  .nav-account-item svg {
+    width: 15px; height: 15px; stroke: var(--gold); fill: none;
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -379,9 +425,15 @@
 <div class="topbar">
   <div class="topbar-msg">Orders before 12:00 ship today &nbsp;·&nbsp; Free shipping from €150</div>
   <div class="topbar-right">
-    <a href="#" class="topbar-link">About Us</a>
-    <span class="topbar-sep">|</span>
     <a href="#" class="topbar-link">Contact</a>
+    <span class="topbar-sep">|</span>
+    <a href="tel:+420123456789" class="topbar-link topbar-link-icon">
+      <svg viewBox="0 0 24 24" width="11" height="11" style="stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;margin-right:4px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+420 123 456 789
+    </a>
+    <span class="topbar-sep">|</span>
+    <a href="https://wa.me/420123456789" class="topbar-link topbar-link-icon" target="_blank">
+      <svg viewBox="0 0 24 24" width="11" height="11" style="fill:currentColor;vertical-align:middle;margin-right:4px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>+420 123 456 789
+    </a>
   </div>
 </div>
 
@@ -399,13 +451,38 @@
   </div>
 
   <div class="nav-actions">
-    <a href="#" class="nav-action-btn">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-    </a>
+    <div class="nav-account-wrap">
+      <a href="#" class="nav-action-btn nav-account-btn">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <svg class="nav-account-arrow" viewBox="0 0 24 24" style="width:10px;height:10px;margin-left:2px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+      <div class="nav-account-dropdown">
+        <div class="nav-account-dropdown-inner">
+        <a href="#" class="nav-account-item">
+          <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+          My Orders
+        </a>
+        <a href="#" class="nav-account-item">
+          <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          My Invoices
+        </a>
+        <a href="#" class="nav-account-item">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          Claims Online
+        </a>
+        <a href="#" class="nav-account-item">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          Contact
+        </a>
+        </div>
+      </div>
+    </div>
     <div class="nav-divider"></div>
     <a href="#" class="btn-login">Logout →</a>
     <a href="#" class="nav-cart">
-      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M6 2H3"/><path d="M3 2l2 12h13l2-8H7"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
       <span class="cart-count">3</span>
     </a>
   </div>
@@ -414,7 +491,7 @@
 <!-- CATEGORY NAV -->
 <div class="cat-nav">
   <div class="cat-item active">
-    <span class="cat-name">New In <span class="cat-name-arrow">▼</span></span>
+    <a href="#" class="cat-item-link"><span class="cat-name">New In <span class="cat-name-arrow">▼</span></span></a>
     <div class="cat-dropdown">
       <a href="#" class="dd-new">Silver New In</a>
       <a href="#" class="dd-new">Gold New In</a>
@@ -426,7 +503,7 @@
   <div class="cat-divider-v"></div>
 
   <div class="cat-item">
-    <span class="cat-name">Gold <span class="cat-name-arrow">▼</span></span>
+    <a href="#" class="cat-item-link" data-page="gold"><span class="cat-name">Gold <span class="cat-name-arrow">▼</span></span></a>
     <div class="cat-dropdown">
       <a href="#" class="dd-new">Gold New In</a>
       <div class="cat-dropdown-sep"></div>
@@ -441,7 +518,7 @@
   </div>
 
   <div class="cat-item">
-    <span class="cat-name">Silver <span class="cat-name-arrow">▼</span></span>
+    <a href="#" class="cat-item-link"><span class="cat-name">Silver <span class="cat-name-arrow">▼</span></span></a>
     <div class="cat-dropdown">
       <a href="#" class="dd-new">Silver New In</a>
       <div class="cat-dropdown-sep"></div>
@@ -465,7 +542,7 @@
   </div>
 
   <div class="cat-item">
-    <span class="cat-name">Watches <span class="cat-name-arrow">▼</span></span>
+    <a href="#" class="cat-item-link"><span class="cat-name">Watches <span class="cat-name-arrow">▼</span></span></a>
     <div class="cat-dropdown">
       <a href="#" class="dd-new">Watches New In</a>
       <div class="cat-dropdown-sep"></div>
@@ -476,7 +553,7 @@
   </div>
 
   <div class="cat-item">
-    <span class="cat-name">Watch Straps <span class="cat-name-arrow">▼</span></span>
+    <a href="#" class="cat-item-link"><span class="cat-name">Watch Straps <span class="cat-name-arrow">▼</span></span></a>
     <div class="cat-dropdown">
       <a href="#" class="dd-new">Straps New In</a>
       <div class="cat-dropdown-sep"></div>
@@ -489,7 +566,7 @@
   </div>
 
   <div class="cat-item">
-    <span class="cat-name">Wall Clocks <span class="cat-name-arrow">▼</span></span>
+    <a href="#" class="cat-item-link"><span class="cat-name">Wall Clocks <span class="cat-name-arrow">▼</span></span></a>
     <div class="cat-dropdown">
       <a href="#">Wooden Clocks</a>
       <a href="#">Digital & Radio-Controlled</a>
@@ -505,7 +582,7 @@
   </div>
 
   <div class="cat-item">
-    <span class="cat-name">Alarm Clocks <span class="cat-name-arrow">▼</span></span>
+    <a href="#" class="cat-item-link"><span class="cat-name">Alarm Clocks <span class="cat-name-arrow">▼</span></span></a>
     <div class="cat-dropdown">
       <a href="#">Digital Alarm Clocks</a>
       <a href="#">Analogue Alarm Clocks</a>
@@ -513,11 +590,12 @@
     </div>
   </div>
 
-  <a href="#" class="cat-item"><span class="cat-name">Spare Parts</span></a>
-  <a href="#" class="cat-item"><span class="cat-name">Promotion</span></a>
-  <a href="#" class="cat-item cat-all"><span class="cat-name">All Products →</span></a>
+  <a href="#" class="cat-item cat-item-link"><span class="cat-name">Spare Parts</span></a>
+  <a href="#" class="cat-item cat-item-link"><span class="cat-name">Promotion</span></a>
+  <a href="#" class="cat-item cat-item-link cat-all"><span class="cat-name">All Products →</span></a>
 </div>
 
+<div id="homepage-sections">
 <!-- HERO -->
 <div class="hero">
   <img class="hero-img" src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/lavvustore-eshop-mockup-hero.png" alt="LAVVU.STORE">
@@ -663,7 +741,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET</span>
         <span class="product-card-name">Silver Pendant Necklace</span>
-        <span class="product-card-ref">SKU: MN-4421-S</span>
+        <span class="product-card-ref">MN-4421-S</span>
         <div class="product-card-footer">
           <span class="product-card-price">€12.90</span>
           <div class="qty-stepper">
@@ -683,7 +761,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET Gold</span>
         <span class="product-card-name">14K Gold Hoop Earrings</span>
-        <span class="product-card-ref">SKU: MG-2201-Y</span>
+        <span class="product-card-ref">MG-2201-Y</span>
         <div class="product-card-footer">
           <span class="product-card-price">€38.50</span>
           <div class="qty-stepper">
@@ -703,7 +781,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Men's Dress Watch Steel</span>
-        <span class="product-card-ref">SKU: LW-0881-B</span>
+        <span class="product-card-ref">LW-0881-B</span>
         <div class="product-card-footer">
           <span class="product-card-price">€74.00</span>
           <div class="qty-stepper">
@@ -723,7 +801,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Leather Strap Brown 20mm</span>
-        <span class="product-card-ref">SKU: LS-0320-BR</span>
+        <span class="product-card-ref">LS-0320-BR</span>
         <div class="product-card-footer">
           <span class="product-card-price">€9.90</span>
           <div class="qty-stepper">
@@ -743,7 +821,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MPM</span>
         <span class="product-card-name">Digital Alarm Clock White</span>
-        <span class="product-card-ref">SKU: MP-1104-W</span>
+        <span class="product-card-ref">MP-1104-W</span>
         <div class="product-card-footer">
           <span class="product-card-price">€16.20</span>
           <div class="qty-stepper">
@@ -763,7 +841,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">RONDA</span>
         <span class="product-card-name">Quartz Movement Set ×10</span>
-        <span class="product-card-ref">SKU: RD-515-10PK</span>
+        <span class="product-card-ref">RD-515-10PK</span>
         <div class="product-card-footer">
           <span class="product-card-price">€22.00 <s class="product-card-old">€25.90</s></span>
           <div class="qty-stepper">
@@ -783,7 +861,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">VLAHA</span>
         <span class="product-card-name">Handmade Oak Wall Clock</span>
-        <span class="product-card-ref">SKU: VL-OAK-580</span>
+        <span class="product-card-ref">VL-OAK-580</span>
         <div class="product-card-footer">
           <span class="product-card-price">€89.00</span>
           <div class="qty-stepper">
@@ -803,7 +881,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Jewellery Display Riser Set</span>
-        <span class="product-card-ref">SKU: DS-RSR-3PC</span>
+        <span class="product-card-ref">DS-RSR-3PC</span>
         <div class="product-card-footer">
           <span class="product-card-price">€18.50</span>
           <div class="qty-stepper">
@@ -823,7 +901,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET</span>
         <span class="product-card-name">Silver Ankle Chain 25cm</span>
-        <span class="product-card-ref">SKU: MN-7701-A</span>
+        <span class="product-card-ref">MN-7701-A</span>
         <div class="product-card-footer">
           <span class="product-card-price">€9.50</span>
           <div class="qty-stepper">
@@ -843,7 +921,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET Gold</span>
         <span class="product-card-name">14K Gold Cross Pendant</span>
-        <span class="product-card-ref">SKU: MG-6610-Y</span>
+        <span class="product-card-ref">MG-6610-Y</span>
         <div class="product-card-footer">
           <span class="product-card-price">€24.00</span>
           <div class="qty-stepper">
@@ -863,7 +941,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Metal Mesh Bracelet 18mm</span>
-        <span class="product-card-ref">SKU: LS-MSH18-GD</span>
+        <span class="product-card-ref">LS-MSH18-GD</span>
         <div class="product-card-footer">
           <span class="product-card-price">€16.80</span>
           <div class="qty-stepper">
@@ -883,7 +961,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MPM</span>
         <span class="product-card-name">Radio-Controlled Wall Clock 30cm</span>
-        <span class="product-card-ref">SKU: MP-RC30-BK</span>
+        <span class="product-card-ref">MP-RC30-BK</span>
         <div class="product-card-footer">
           <span class="product-card-price">€34.00</span>
           <div class="qty-stepper">
@@ -916,7 +994,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET Gold</span>
         <span class="product-card-name">14K Gold Chain Necklace 45cm</span>
-        <span class="product-card-ref">SKU: MG-4501-Y</span>
+        <span class="product-card-ref">MG-4501-Y</span>
         <div class="product-card-footer"><span class="product-card-price">€28.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -925,7 +1003,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET Gold</span>
         <span class="product-card-name">14K Gold Bracelet Anchor</span>
-        <span class="product-card-ref">SKU: MG-8120-W</span>
+        <span class="product-card-ref">MG-8120-W</span>
         <div class="product-card-footer"><span class="product-card-price">€34.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -934,7 +1012,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET Gold</span>
         <span class="product-card-name">14K Rose Gold Drop Earrings</span>
-        <span class="product-card-ref">SKU: MG-2310-R</span>
+        <span class="product-card-ref">MG-2310-R</span>
         <div class="product-card-footer"><span class="product-card-price">€31.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -943,7 +1021,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET Gold</span>
         <span class="product-card-name">14K Gold Signet Ring</span>
-        <span class="product-card-ref">SKU: MG-7700-Y</span>
+        <span class="product-card-ref">MG-7700-Y</span>
         <div class="product-card-footer"><span class="product-card-price">€47.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -966,7 +1044,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET</span>
         <span class="product-card-name">Silver Necklace & Earring Set</span>
-        <span class="product-card-ref">SKU: MN-SET-401</span>
+        <span class="product-card-ref">MN-SET-401</span>
         <div class="product-card-footer"><span class="product-card-price">€18.90</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -975,7 +1053,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET</span>
         <span class="product-card-name">925 Silver Zirconia Ring</span>
-        <span class="product-card-ref">SKU: MN-6620-Z</span>
+        <span class="product-card-ref">MN-6620-Z</span>
         <div class="product-card-footer"><span class="product-card-price">€10.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -984,7 +1062,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET</span>
         <span class="product-card-name">Silver Curb Chain Bracelet</span>
-        <span class="product-card-ref">SKU: MN-9810-B</span>
+        <span class="product-card-ref">MN-9810-B</span>
         <div class="product-card-footer"><span class="product-card-price">€14.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -993,7 +1071,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MINET</span>
         <span class="product-card-name">925 Silver Heart Pendant</span>
-        <span class="product-card-ref">SKU: MN-5501-H</span>
+        <span class="product-card-ref">MN-5501-H</span>
         <div class="product-card-footer"><span class="product-card-price">€8.20</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1016,7 +1094,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MPM</span>
         <span class="product-card-name">Men's Chronograph Steel</span>
-        <span class="product-card-ref">SKU: MP-7710-CH</span>
+        <span class="product-card-ref">MP-7710-CH</span>
         <div class="product-card-footer"><span class="product-card-price">€68.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1025,7 +1103,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MPM</span>
         <span class="product-card-name">Ladies Crystal Dial Watch</span>
-        <span class="product-card-ref">SKU: MP-4402-CR</span>
+        <span class="product-card-ref">MP-4402-CR</span>
         <div class="product-card-footer"><span class="product-card-price">€39.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1034,7 +1112,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MPM</span>
         <span class="product-card-name">Children's Colour Dial Watch</span>
-        <span class="product-card-ref">SKU: MP-K101-BL</span>
+        <span class="product-card-ref">MP-K101-BL</span>
         <div class="product-card-footer"><span class="product-card-price">€14.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1043,7 +1121,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Sport GPS Watch Black</span>
-        <span class="product-card-ref">SKU: LW-GPS-BK</span>
+        <span class="product-card-ref">LW-GPS-BK</span>
         <div class="product-card-footer"><span class="product-card-price">€92.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1066,7 +1144,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Leather Strap Crocodile Brown</span>
-        <span class="product-card-ref">SKU: LS-CR20-BR</span>
+        <span class="product-card-ref">LS-CR20-BR</span>
         <div class="product-card-footer"><span class="product-card-price">€11.90</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1075,7 +1153,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Metal Milanese Bracelet 20mm</span>
-        <span class="product-card-ref">SKU: LS-MIL20-SL</span>
+        <span class="product-card-ref">LS-MIL20-SL</span>
         <div class="product-card-footer"><span class="product-card-price">€14.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1084,7 +1162,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Apple Watch Leather Band 44mm</span>
-        <span class="product-card-ref">SKU: LS-AW44-TN</span>
+        <span class="product-card-ref">LS-AW44-TN</span>
         <div class="product-card-footer"><span class="product-card-price">€13.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1093,7 +1171,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Silicone Strap Navy 18mm</span>
-        <span class="product-card-ref">SKU: LS-S18-NV</span>
+        <span class="product-card-ref">LS-S18-NV</span>
         <div class="product-card-footer"><span class="product-card-price">€4.90</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1116,7 +1194,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">VLAHA</span>
         <span class="product-card-name">Handmade Walnut Wall Clock 58cm</span>
-        <span class="product-card-ref">SKU: VL-WLT-580</span>
+        <span class="product-card-ref">VL-WLT-580</span>
         <div class="product-card-footer"><span class="product-card-price">€110.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1125,7 +1203,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">LOFT Wall Clock 40cm Black</span>
-        <span class="product-card-ref">SKU: LW-LOFT-40B</span>
+        <span class="product-card-ref">LW-LOFT-40B</span>
         <div class="product-card-footer"><span class="product-card-price">€29.90</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1134,7 +1212,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MPM</span>
         <span class="product-card-name">Radio-Controlled Clock 30cm</span>
-        <span class="product-card-ref">SKU: MP-RC30-BK</span>
+        <span class="product-card-ref">MP-RC30-BK</span>
         <div class="product-card-footer"><span class="product-card-price">€34.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1143,7 +1221,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Glass Designer Clock 35cm</span>
-        <span class="product-card-ref">SKU: LW-GLS-35W</span>
+        <span class="product-card-ref">LW-GLS-35W</span>
         <div class="product-card-footer"><span class="product-card-price">€44.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1166,7 +1244,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MPM</span>
         <span class="product-card-name">Digital Alarm Clock White</span>
-        <span class="product-card-ref">SKU: MP-1104-W</span>
+        <span class="product-card-ref">MP-1104-W</span>
         <div class="product-card-footer"><span class="product-card-price">€16.20</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1175,7 +1253,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MPM</span>
         <span class="product-card-name">Analogue Alarm Clock Chrome</span>
-        <span class="product-card-ref">SKU: MP-2200-CR</span>
+        <span class="product-card-ref">MP-2200-CR</span>
         <div class="product-card-footer"><span class="product-card-price">€11.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1184,7 +1262,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MPM</span>
         <span class="product-card-name">Radio-Controlled Alarm Clock</span>
-        <span class="product-card-ref">SKU: MP-RC10-BK</span>
+        <span class="product-card-ref">MP-RC10-BK</span>
         <div class="product-card-footer"><span class="product-card-price">€22.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1193,7 +1271,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">MPM</span>
         <span class="product-card-name">Children's Alarm Clock Colour</span>
-        <span class="product-card-ref">SKU: MP-K50-CO</span>
+        <span class="product-card-ref">MP-K50-CO</span>
         <div class="product-card-footer"><span class="product-card-price">€13.80</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1216,7 +1294,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">RONDA</span>
         <span class="product-card-name">Quartz Movement Set ×10</span>
-        <span class="product-card-ref">SKU: RD-515-10PK</span>
+        <span class="product-card-ref">RD-515-10PK</span>
         <div class="product-card-footer"><span class="product-card-price">€22.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1225,7 +1303,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">ENERGIZER</span>
         <span class="product-card-name">SR626SW Watch Battery ×10</span>
-        <span class="product-card-ref">SKU: EN-SR626-10</span>
+        <span class="product-card-ref">EN-SR626-10</span>
         <div class="product-card-footer"><span class="product-card-price">€4.20</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1234,7 +1312,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">BERGEON</span>
         <span class="product-card-name">Spring Bar Tool Professional</span>
-        <span class="product-card-ref">SKU: BG-6767-F</span>
+        <span class="product-card-ref">BG-6767-F</span>
         <div class="product-card-footer"><span class="product-card-price">€8.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1243,7 +1321,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">RONDA</span>
         <span class="product-card-name">Watch Crown Assortment ×20</span>
-        <span class="product-card-ref">SKU: RD-CRN-20PK</span>
+        <span class="product-card-ref">RD-CRN-20PK</span>
         <div class="product-card-footer"><span class="product-card-price">€6.90</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1266,7 +1344,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Ring Gift Box Navy Velvet</span>
-        <span class="product-card-ref">SKU: PK-RNG-NV</span>
+        <span class="product-card-ref">PK-RNG-NV</span>
         <div class="product-card-footer"><span class="product-card-price">€1.80</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1275,7 +1353,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Jewellery Display Riser Set</span>
-        <span class="product-card-ref">SKU: DS-RSR-3PC</span>
+        <span class="product-card-ref">DS-RSR-3PC</span>
         <div class="product-card-footer"><span class="product-card-price">€18.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1284,7 +1362,7 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Necklace T-Bar Stand Black</span>
-        <span class="product-card-ref">SKU: DS-TBR-BK</span>
+        <span class="product-card-ref">DS-TBR-BK</span>
         <div class="product-card-footer"><span class="product-card-price">€7.20</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
@@ -1293,12 +1371,277 @@
       <div class="product-card-body">
         <span class="product-card-brand">LAVVU</span>
         <span class="product-card-name">Earring Display Card ×50</span>
-        <span class="product-card-ref">SKU: DS-ERC-50</span>
+        <span class="product-card-ref">DS-ERC-50</span>
         <div class="product-card-footer"><span class="product-card-price">€3.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" style="background:var(--navy);color:#fff;" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
       </div>
     </a>
   </div>
 </section>
+</div><!-- /homepage-sections -->
+
+<!-- GOLD CATEGORY PAGE -->
+<section id="page-gold" class="cat-page" style="display:none;">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="cat-sidebar" style="width:240px;min-width:240px;max-width:240px;background:#fff;border-right:1px solid #e8e0d0;vertical-align:top;display:inline-block;">
+
+      <!-- Category tree -->
+      <nav class="sidebar-cat-tree" style="display:block;padding:24px 0 20px;border-bottom:2px solid #e8e0d0;">
+        <a href="#" class="sct-new">☆ New In</a>
+        <div class="sct-group sct-group--open">
+          <div class="sct-group-title">Gold Jewellery</div>
+          <div class="sct-group-items">
+            <a href="#" class="sct-item sct-item--new">☆ Gold New In</a>
+            <a href="#" class="sct-item sct-item--active">Gold Sets</a>
+            <a href="#" class="sct-item">Gold Earrings</a>
+            <a href="#" class="sct-item">Gold Necklaces</a>
+            <a href="#" class="sct-item">Gold Bracelets</a>
+            <a href="#" class="sct-item">Gold Rings</a>
+            <a href="#" class="sct-item">Gold Pendants</a>
+            <a href="#" class="sct-item">Children's Gold</a>
+          </div>
+        </div>
+        <a href="#" class="sct-top-link">Silver Jewellery</a>
+        <a href="#" class="sct-top-link">Watches</a>
+        <a href="#" class="sct-top-link">Watch Straps</a>
+        <a href="#" class="sct-top-link">Wall Clocks</a>
+        <a href="#" class="sct-top-link">Alarm Clocks</a>
+        <a href="#" class="sct-top-link">Spare Parts</a>
+        <a href="#" class="sct-top-link">Promotion</a>
+      </nav>
+
+      <!-- Filters removed -->
+
+    </aside><!--
+
+    RIGHT CONTENT
+    --><div class="cat-page-content" style="display:inline-block;vertical-align:top;width:calc(100% - 240px);">
+      <div class="cat-page-header">
+        <div>
+          <div class="pgs-eyebrow">14K Yellow · White · Rose</div>
+          <h1 class="cat-page-title">Gold Jewellery</h1>
+          <p class="cat-page-count">48 products</p>
+        </div>
+        <div class="cat-page-sort">
+          <label class="cat-sort-label">Sort by</label>
+          <select class="cat-sort-select">
+            <option>Newest first</option>
+            <option>Price: low to high</option>
+            <option>Price: high to low</option>
+            <option>Best sellers</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid cat-page-grid">
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold chain necklace"><span class="badge badge-new">New</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Chain Necklace 45cm</span><span class="product-card-ref">MG-4501-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€28.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold bracelet"><span class="badge badge-sale">−10%</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Bracelet Anchor</span><span class="product-card-ref">MG-8120-W</span>
+            <div class="product-card-footer"><span class="product-card-price">€30.60 <s class="product-card-old">€34.00</s></span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold drop earrings"><span class="badge badge-best">Best</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Rose Gold Drop Earrings</span><span class="product-card-ref">MG-2310-R</span>
+            <div class="product-card-footer"><span class="product-card-price">€31.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold signet ring"></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Signet Ring</span><span class="product-card-ref">MG-7700-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€47.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold cross pendant"><span class="badge badge-new">New</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Cross Pendant</span><span class="product-card-ref">MG-6610-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€24.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold hoop earrings"><span class="badge badge-sale">−15%</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Hoop Earrings 20mm</span><span class="product-card-ref">MG-2201-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€32.70 <s class="product-card-old">€38.50</s></span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="White gold ring"></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K White Gold Diamond Ring</span><span class="product-card-ref">MG-7810-W</span>
+            <div class="product-card-footer"><span class="product-card-price">€62.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Rose gold necklace"><span class="badge badge-best">Best</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Rose Gold Heart Necklace</span><span class="product-card-ref">MG-4420-R</span>
+            <div class="product-card-footer"><span class="product-card-price">€35.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold stud earrings"><span class="badge badge-new">New</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Zirconia Studs</span><span class="product-card-ref">MG-2105-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€19.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold children bracelet"></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Children's Bracelet</span><span class="product-card-ref">MG-8050-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€22.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold tennis bracelet"><span class="badge badge-best">Best</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Tennis Bracelet</span><span class="product-card-ref">MG-8300-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€58.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold snake chain"><span class="badge badge-new">New</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Snake Chain 50cm</span><span class="product-card-ref">MG-4550-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€33.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold infinity ring"></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Infinity Ring</span><span class="product-card-ref">MG-7720-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€41.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold ball earrings"><span class="badge badge-sale">−12%</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K White Gold Ball Earrings</span><span class="product-card-ref">MG-2250-W</span>
+            <div class="product-card-footer"><span class="product-card-price">€26.40 <s class="product-card-old">€30.00</s></span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold anchor pendant"></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Anchor Pendant</span><span class="product-card-ref">MG-6620-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€26.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold set necklace earrings"><span class="badge badge-best">Best</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Necklace & Earring Set</span><span class="product-card-ref">MG-SET-01Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€54.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Rose gold bangle"><span class="badge badge-new">New</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Rose Gold Bangle</span><span class="product-card-ref">MG-8140-R</span>
+            <div class="product-card-footer"><span class="product-card-price">€39.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold star earrings"></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Star Stud Earrings</span><span class="product-card-ref">MG-2180-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€21.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold figaro chain"><span class="badge badge-sale">−8%</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Figaro Chain 60cm</span><span class="product-card-ref">MG-4560-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€36.80 <s class="product-card-old">€40.00</s></span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold eternity ring"><span class="badge badge-best">Best</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Eternity Ring</span><span class="product-card-ref">MG-7730-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€53.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="White gold pendant"><span class="badge badge-new">New</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K White Gold Leaf Pendant</span><span class="product-card-ref">MG-6630-W</span>
+            <div class="product-card-footer"><span class="product-card-price">€29.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold curb chain"></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Curb Chain 55cm</span><span class="product-card-ref">MG-4555-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€31.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Rose gold ring set"><span class="badge badge-sale">−20%</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Rose Gold Ring Set ×3</span><span class="product-card-ref">MG-SET-03R</span>
+            <div class="product-card-footer"><span class="product-card-price">€68.00 <s class="product-card-old">€85.00</s></span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold butterfly earrings"><span class="badge badge-new">New</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Butterfly Earrings</span><span class="product-card-ref">MG-2290-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€23.50</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold bar necklace"></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Bar Necklace 40cm</span><span class="product-card-ref">MG-4510-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€27.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold solitaire ring"><span class="badge badge-best">Best</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Solitaire Ring</span><span class="product-card-ref">MG-7740-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€44.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold omega chain"><span class="badge badge-new">New</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Omega Chain 42cm</span><span class="product-card-ref">MG-4542-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€49.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold children necklace"></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Children's Necklace 36cm</span><span class="product-card-ref">MG-4536-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€18.00</span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <div class="product-card-img-wrap"><img src="https://raw.githubusercontent.com/lavvustore/lavvustore.com/main/product-04.png" alt="Gold clover pendant"><span class="badge badge-sale">−10%</span></div>
+          <div class="product-card-body"><span class="product-card-brand">MINET Gold</span><span class="product-card-name">14K Gold Four-Leaf Clover Pendant</span><span class="product-card-ref">MG-6640-Y</span>
+            <div class="product-card-footer"><span class="product-card-price">€22.50 <s class="product-card-old">€25.00</s></span><div class="qty-stepper"><button class="qty-btn" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=Math.max(1,+this.parentNode.querySelector('.qty-val').textContent-1)">−</button><span class="qty-val">1</span><button class="qty-btn qty-btn--plus" onclick="event.preventDefault();this.parentNode.querySelector('.qty-val').textContent=+this.parentNode.querySelector('.qty-val').textContent+1">+</button></div></div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+</section>
+
 <section class="trust-bar">
   <div class="trust-item">
     <div class="trust-icon">
@@ -1372,11 +1715,10 @@
     </div>
     <div class="footer-col">
       <h4 class="footer-col-title">Account</h4>
-      <a href="#" class="footer-link">My Account</a>
-      <a href="#" class="footer-link">Order History</a>
-      <a href="#" class="footer-link">Saved Lists</a>
-      <a href="#" class="footer-link">Price Lists</a>
-      <a href="#" class="footer-link">New Customer Registration</a>
+      <a href="#" class="footer-link">My Orders</a>
+      <a href="#" class="footer-link">My Invoices</a>
+      <a href="#" class="footer-link">Claims Online</a>
+      <a href="#" class="footer-link">Contact</a>
     </div>
     <div class="footer-col">
       <h4 class="footer-col-title">Information</h4>
@@ -1401,15 +1743,7 @@
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         Mon–Fri 8:00–16:30
       </p>
-      <div class="footer-payment">
-        <span class="footer-payment-label">We accept</span>
-        <div class="footer-payment-icons">
-          <span class="pay-icon">VISA</span>
-          <span class="pay-icon">MC</span>
-          <span class="pay-icon">PayPal</span>
-          <span class="pay-icon">SEPA</span>
-        </div>
-      </div>
+
     </div>
   </div>
   <div class="footer-bottom">
@@ -1673,7 +2007,7 @@
     display: flex; align-items: stretch;
   }
   .trust-item {
-    flex: 1; padding: 40px 28px;
+    flex: 1; padding: 40px 28px; min-height: 170px;
     display: flex; align-items: center; gap: 18px;
     border-right: 1px solid rgba(201,168,76,0.15);
   }
@@ -1779,7 +2113,169 @@
   }
   .footer-bottom-link:hover { color: var(--gold); }
   .footer-bottom-sep { opacity: 0.2; }
+
+  /* ── CATEGORY PAGE ── */
+  .cat-page {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-lt);
+    font-size: 0;
+  }
+  .cat-sidebar {
+    font-size: 14px;
+  }
+  .cat-page-content {
+    flex: unset;
+    font-size: 14px;
+    padding: 40px 48px 64px;
+    box-sizing: border-box;
+  }
+  .sct-new {
+    display: block;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    text-decoration: none; padding: 7px 24px;
+    transition: color 0.15s;
+  }
+  .sct-new:hover { color: var(--gold-light); }
+  .sct-group { margin-top: 20px; }
+  .sct-group-title {
+    display: block;
+    font-size: 13px; font-weight: 700; color: var(--navy);
+    padding: 7px 24px; letter-spacing: 0.02em;
+  }
+  .sct-group-items {
+    display: block;
+    border-left: 2px solid var(--gold);
+    margin-left: 24px;
+    margin-bottom: 4px;
+  }
+  .sct-item {
+    display: block;
+    font-size: 13px; font-weight: 400; color: var(--text-mid);
+    text-decoration: none; padding: 5px 16px;
+    transition: color 0.15s, background 0.15s;
+  }
+  .sct-item:hover { color: var(--navy); background: var(--beige); }
+  .sct-item--active { color: var(--navy); font-weight: 600; }
+  .sct-item--new { color: var(--gold); font-weight: 500; }
+  .sct-top-link {
+    display: block;
+    font-size: 13px; font-weight: 400; color: var(--text-mid);
+    text-decoration: none; padding: 7px 24px;
+    transition: color 0.15s;
+  }
+  .sct-top-link:hover { color: var(--navy); }
+
+  /* Filters */
+  .sidebar-filters {
+    padding: 24px 24px 32px;
+  }
+  .sf-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .sf-title {
+    font-size: 15px; font-weight: 700; color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+  .sf-clear {
+    font-size: 12px; font-weight: 400; color: var(--text-mid);
+    text-decoration: none; transition: color 0.15s;
+  }
+  .sf-clear:hover { color: var(--gold); }
+  .sf-group {
+    border-top: 1px solid var(--border-lt);
+  }
+  .sf-group-btn {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 0; background: none; border: none; cursor: pointer;
+    font-family: 'Open Sans', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy);
+    transition: color 0.15s;
+  }
+  .sf-group-btn:hover { color: var(--gold); }
+  .sf-arrow {
+    font-size: 8px; opacity: 0.4;
+  }
+
+  /* Content area */
+  .cat-page-content {
+    flex: 1;
+    padding: 40px 48px 64px;
+  }
+  .cat-page-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 32px;
+  }
+  .cat-page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 2.8vw, 40px); font-weight: 300;
+    color: var(--navy); line-height: 1.1; margin-bottom: 4px;
+  }
+  .cat-page-count {
+    font-size: 12px; color: var(--text-mid); font-weight: 400;
+    margin-top: 6px;
+  }
+  .cat-page-sort {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cat-sort-label {
+    font-size: 12px; font-weight: 600; color: var(--text-mid);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .cat-sort-select {
+    font-family: 'Open Sans', sans-serif; font-size: 13px;
+    color: var(--navy); border: 1px solid var(--border-lt);
+    border-radius: 2px; padding: 7px 12px; background: var(--white);
+    cursor: pointer; outline: none;
+    transition: border-color 0.2s;
+  }
+  .cat-sort-select:focus { border-color: var(--gold); }
+  .cat-page-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
 </style>
 
-</body>
-</html>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const homepage = document.getElementById('homepage-sections');
+    const goldPage = document.getElementById('page-gold');
+    const goldLink = document.querySelector('.cat-item-link[data-page="gold"]');
+    const logo = document.querySelector('.nav-logo');
+    const catNav = document.querySelector('.cat-nav');
+
+    function showPage(page) {
+      homepage.style.display = page === 'home' ? '' : 'none';
+      goldPage.style.display = page === 'gold' ? '' : 'none';
+    }
+
+    if (goldLink) {
+      goldLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showPage('gold');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    if (logo) {
+      logo.addEventListener('click', function(e) {
+        e.preventDefault();
+        showPage('home');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Hide sidebar when any cat-item with dropdown is hovered
+    if (catNav) {
+      const itemsWithDropdown = catNav.querySelectorAll('.cat-item:has(.cat-dropdown)');
+      const sidebar = document.querySelector('.cat-sidebar');
+      itemsWithDropdown.forEach(function(item) {
+        item.addEventListener('mouseenter', function() {
+          if (sidebar) sidebar.style.visibility = 'hidden';
+        });
+        item.addEventListener('mouseleave', function() {
+          if (sidebar) sidebar.style.visibility = '';
+        });
+      });
+    }
+  });
+</script>
